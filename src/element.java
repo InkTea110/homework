@@ -1,4 +1,4 @@
-public class element {
+public class element<T> {
     int Data;
     element Next;
     public int getData() {
@@ -14,20 +14,22 @@ public class element {
     public element getNext() {
         return Next;
     }
-
+public void setNext(element<T> next){
+        Next=next;
+}
 
 
     public void setNext(element next) {
         Next = next;
     }
-public element(int Data){
+public element(T Data){
         setData(Data);
         setNext(null);
-    System.out.println("Econstructor:\t"+Integer.toHexString(this.hashCode()));
+    /*System.out.println("Econstructor:\t"+Integer.toHexString(this.hashCode()));*/
 }
-public element(int Data,element Next){
+public element(T Data,element<T> Next){
         setData(Data);
         setNext(Next);
-    System.out.println("Econstructor:\t"+Integer.toHexString(this.hashCode()));
+    /*System.out.println("Econstructor:\t"+Integer.toHexString(this.hashCode()));*/
 }
 }

@@ -1,12 +1,12 @@
-public class forwardlist {
-    element Head;
+public class forwardlist<T> {
+    element<T> Head;
     int size;
     public forwardlist(){
         this.Head=null;
         size=0;
         System.out.println("LConstrucotr:\t"+Integer.toHexString(hashCode()));
     }
-    public void push_front(int Data)
+    public void push_front(T Data)
     {
         // element New=new element(Data);
       // New.setNext(Head);
@@ -15,12 +15,12 @@ public class forwardlist {
         size++;
     }
 
-    public void push_back(int Data){
+    public void push_back(T Data){
         if(Head==null){
             push_front(Data);
             return;
         }
-        element Temp = Head;
+        element<T> Temp = Head;
         while(Temp.getNext()!=null)Temp=Temp.getNext();
         Temp.setNext(new element(Data));
         size++;
@@ -34,7 +34,7 @@ public class forwardlist {
         Temp.setNext(null);
         size--;
     }
-    void insert(int Data, int Index){
+    void insert(T Data, int Index){
         if(Index==0){
             push_front(Data);
             return;
@@ -42,7 +42,7 @@ public class forwardlist {
         if(Index>size){
             return;
         }
-        element Temp=Head;
+        element<T> Temp=Head;
         for(int i =0;i<Index-1;i++)Temp=Temp.getNext();
        // element New=new element(Data);
        // New.setNext(Temp.getNext());
@@ -50,14 +50,14 @@ public class forwardlist {
         Temp.setNext((new element(Data,Temp.getNext())));
         size++;
     }
-    forwardlist(forwardlist other){
+    forwardlist(forwardlist<T> other){
         System.out.println("LCopyConstructor:"+Integer.toHexString((hashCode())));
-        for(element temp=other.Head;temp!=null;temp=temp.getNext())
+        for(element<T> temp=other.Head;temp!=null;temp=temp.getNext())
             this.push_back(temp.getData());
     reverse();
     }
     public void reverse(){
-        forwardlist reverse=new forwardlist();
+        forwardlist<T> reverse=new forwardlist<T>();
         while(Head!=null){
             reverse.push_front(Head.Data);
             pop_front();
@@ -66,10 +66,16 @@ public class forwardlist {
         reverse.Head=null;
     }
     public void print(){
-        element Temp=Head;
+        element<T> Temp=Head;
         while(Temp!=null){
             System.out.print(Temp.getData()+"\t");
             Temp=Temp.getNext();
+        }
+        public void pop_back(){
+            element<T> temp=Head;
+            while(temp.getNext().getNext()!=null)temp=temp.getNext();
+            temp.setNext(null);
+            size--;
         }
     }
 }
