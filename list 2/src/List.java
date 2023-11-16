@@ -154,22 +154,7 @@ public class List
         }
         size--;
     }
-    void erase(int Data, int Index)
-    {
-        if(Index == 0)
-        {
-            pop_front();
-            return;
-        }
-        if(Index > size)return;
-        Element Temp = Head;
-        for(int i = 0; i < Index - 1; i++)Temp = Temp.getNext();
-        /*Element New = new Element(Data);
-        New.setNext(Temp.getNext());
-        Temp.setNext(New);*/
-        Temp.setNext(new Element(Data, Temp.getNext()));
-        size++;
-    }
+
     //                  Methods:
     public void clear()
     {

@@ -24,13 +24,16 @@ public class Main {
         list.print();
         list.reverse_print();*//*
         list.print();*/
+
+        //                      insert
         System.out.print("Введите значение добавляемого элемента: ");
         int value = kb.nextInt();
         System.out.print("Введите индекс добавляемого элемента: ");
         int index= kb.nextInt();
-
         list.insert(value,index);
-
         list.print();
+        //
+
+
     }
 }
